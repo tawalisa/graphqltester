@@ -1,0 +1,1 @@
+docker run --rm -it -v %cd%/src:/code graphqltester sh
