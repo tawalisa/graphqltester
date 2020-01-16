@@ -1,6 +1,6 @@
 # The graphqlTester is a light tool which can run some integration test for develop.
 
-# The graphqlTester supports 2 ways to run. Docker and localrun.
+The graphqlTester supports 2 ways to run. Docker and localrun.
 
 ## Docker
 

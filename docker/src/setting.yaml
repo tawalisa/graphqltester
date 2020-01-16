@@ -2,4 +2,8 @@
 url: http://10.0.75.1:8080/graphql
 testcases:
   -
+    label: localrun
     file: testcases.yaml
+  -
+    label: develop
+    file: testcases-integration.yaml

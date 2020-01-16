@@ -41,13 +41,18 @@ def _testcase(testcase, client):
             testresult['fail'] += 1
             testresult['total'] += 1
 def printSummary():
-    print('total :', testresult['total'])
-    print('success:', testresult['success'])
-    print('failed:', testresult['fail'])
+    print('total :', testresult['total'], flush=True)
+    print('success:', testresult['success'], flush=True)
+    print('failed:', testresult['fail'], file=sys.stderr, flush=True)
 
 
 
 docs = yaml.load_all(open('setting.yaml'), Loader=yaml.FullLoader)
+filter = "*";
+if len(sys.argv)>1:
+    filter = sys.argv[1]
+
+print("filter:", filter)
 setting = {}
 for doc in docs:
     print(doc.items())
@@ -64,5 +69,6 @@ client = Client(
     fetch_schema_from_transport=False,
 )
 for testcase in setting['testcases']:
-    test(testcase['file'], client)
+    if filter == "*" or testcase["label"] == filter:
+        test(testcase['file'], client)
 printSummary()
